@@ -11,5 +11,6 @@ node server.js
 ```
 cd frontend
 npm i
+# create a .env file with: PUBLIC_NODE_BACKEND_URL=http://localhost:8080
 npm run dev
 ```

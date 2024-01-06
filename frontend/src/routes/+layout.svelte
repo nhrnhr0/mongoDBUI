@@ -1,5 +1,21 @@
 <script>
 import Navbar from "$lib/components/Navbar.svelte";
+const UNPROTECTED_ROUTES = ["/login", "/register"];
+import { page } from "$app/stores";
+import { onMount } from "svelte";
+import { userStore } from "./../lib/stores/userStore.js";
+import { goto } from "$app/navigation";
+import { browser } from "$app/environment";
+
+page.subscribe((p) => {
+  if (browser) {
+    if (!UNPROTECTED_ROUTES.includes(p.url.pathname)) {
+      if (!$userStore) {
+        goto("/login?redirect=" + p.url.pathname);
+      }
+    }
+  }
+});
 </script>
 
 <div class="container">

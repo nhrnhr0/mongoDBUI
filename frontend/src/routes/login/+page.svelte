@@ -11,12 +11,17 @@ let password;
 let error;
 /**@type {boolean}*/
 let loading = false;
-const SUCSESS_REDIRECT = "/";
 function login() {
   loading = true;
   AuthController.login(username, password)
     .then(() => {
-      goto(SUCSESS_REDIRECT);
+      // get the redirect url from the query params or default to '/'
+      let redirect = "/";
+      const params = new URLSearchParams(location.search);
+      if (params.has("redirect")) {
+        redirect = params.get("redirect") || "/";
+      }
+      goto(redirect);
     })
     .catch((err) => {
       error = err.message;
