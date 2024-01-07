@@ -2,7 +2,7 @@
 <script>
 import { goto } from "$app/navigation";
 import Spinner from "$lib/components/Spinner.svelte";
-import AuthController from "./../../lib/network/auth.controller.js";
+import AuthController from "../../lib/controllers/auth.controller.js";
 /**@type {string} */
 let username;
 /**@type {string} */

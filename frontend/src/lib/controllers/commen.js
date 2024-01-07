@@ -1,5 +1,6 @@
 import {PUBLIC_NODE_BACKEND_URL} from '$env/static/public';
-
+import { userStore } from '$lib/stores/userStore';
+import { get } from 'svelte/store';
 /**
  * @param {string} url
  * @param {object} options
@@ -7,8 +8,14 @@ import {PUBLIC_NODE_BACKEND_URL} from '$env/static/public';
  * @throws {Error}
  * */
 export async function fetch_from_backend(url, options) {
-    debugger;
     url = PUBLIC_NODE_BACKEND_URL + url;
+    const user = get(userStore);
+    if (user && user.accessToken) {
+        options.headers = {
+            ...options.headers,
+            "x-access-token": user.accessToken,
+        };
+    }
     const response = await fetch(url, options);
     return response;
 }

@@ -1,28 +1,28 @@
 <!-- FILEPATH: /C:/Users/ronio/Desktop/projects/express-svelteKit-auth/frontend/src/lib/components/Navbar.svelte -->
 <!-- BEGIN: abpxx6d04wxr -->
 <script>
-import AuthController from "$lib/network/auth.controller";
+import AuthController from "$lib/controllers/auth.controller";
 import { userStore } from "$lib/stores/userStore";
 
-export let title = "SvelteKit";
+export let title = "DBUI";
 export let links = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "categories",
-    links: [
-      {
-        name: "category 1",
-        href: "/category/1",
-      },
-      {
-        name: "category 2",
-        href: "/category/2",
-      },
-    ],
-  },
+  // {
+  //   name: "Home",
+  //   href: "/",
+  // },
+  // {
+  //   name: "categories",
+  //   links: [
+  //     {
+  //       name: "category 1",
+  //       href: "/category/1",
+  //     },
+  //     {
+  //       name: "category 2",
+  //       href: "/category/2",
+  //     },
+  //   ],
+  // },
 ];
 </script>
 
